@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,9 +40,13 @@ public class MainActivity extends AppCompatActivity implements
         //view
         listView = (ListView) findViewById(R.id.list);
 
-        setListViewAdapter();
-        getDataFromUrl(Constants.getMoviesURL("popular",page_count));
-        listView.setOnScrollListener(onScrollListener());
+        if(Utils.isOnline(getApplicationContext())) {
+            setListViewAdapter();
+            getDataFromUrl(Constants.getMoviesURL("popular", page_count));
+            listView.setOnScrollListener(onScrollListener());
+        }else {
+            Toast.makeText(this,"No Internet connectivity", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setListViewAdapter() {
