@@ -9,7 +9,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        IMoviesLoadedListener {
 
     private static final String TAG = "MainActivity";
     private ListView listView;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     // calling asynctask to get json data from internet
     private void getDataFromUrl(String url) {
-        new LoadMoviesFromUrlTask(this, url).execute();
+        new LoadMoviesFromUrlTask(this, url, this).execute();
     }
 
 
@@ -78,5 +79,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
+    }
+
+    @Override
+    public void onPopularMoviesLoaded(ArrayList<Movie> movies) {
+        mPopularMovieList = movies;
+        adapter.notifyDataSetChanged();
     }
 }

@@ -22,14 +22,17 @@ import java.util.ArrayList;
 public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
 
 
+    private IMoviesLoadedListener iMoviesLoadedListener;
     Context mContext;
     String mUrl;
 
     private final String USER_AGENT = "Android";
 
-    public LoadMoviesFromUrlTask(Context mContext, String mUrl) {
+    public LoadMoviesFromUrlTask(Context mContext, String mUrl, IMoviesLoadedListener iMoviesLoadedListener) {
         this.mContext = mContext;
         this.mUrl = mUrl;
+        this.iMoviesLoadedListener = iMoviesLoadedListener;
+
     }
 
     @Override
@@ -76,7 +79,7 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
 
         ArrayList<Movie> movieList = new ArrayList<>();
         movieList = parseResponse(s);
-
+        iMoviesLoadedListener.onPopularMoviesLoaded(movieList);
 
     }
 
