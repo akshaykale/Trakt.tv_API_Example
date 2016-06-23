@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/cardMarginVertical"
+    android:layout_marginLeft="@dimen/cardMarginHorizontal"
+    android:layout_marginRight="@dimen/cardMarginHorizontal"
+    android:layout_marginTop="@dimen/cardMarginVertical"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#fff"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="0dp">
 
-    <TextView
-        android:id="@+id/tv_row_title"
-        android:textSize="25sp"
-        android:layout_margin="10dp"
-        android:gravity="center_vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"/>
+        android:layout_height="150dp">
 
-</LinearLayout>
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/iv_row_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_row_title"
+            android:textSize="18sp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="#ffffff"
+            android:background="#3e1b1919"
+            android:text="Title"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

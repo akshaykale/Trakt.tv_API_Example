@@ -59,6 +59,70 @@ public class Movie {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+    public String getTagline() {
+        return tagline;
+    }
+
+    public void setTagline(String tagline) {
+        this.tagline = tagline;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
     /**
      * {
      "title":"Batman Begins",
@@ -72,9 +136,17 @@ public class Movie {
      }
      * */
 
-    String title;
-    int year,trakt;
-    String id_IMDB,id_TMDB,slug;
+    String title,tagline,overview,trailer,homepage,banner;
+    int year,trakt,runtime;
+    double rating;
+    String id_IMDB;
+    String id_TMDB;
+    String slug;
+
+
+
+    String genres;
+
 
 
 }

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/cardMarginVertical"
+    android:layout_marginLeft="@dimen/cardMarginHorizontal"
+    android:layout_marginRight="@dimen/cardMarginHorizontal"
+    android:layout_marginTop="@dimen/cardMarginVertical"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#fff"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="0dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_row_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:background="#000"
+                android:layout_height="18dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/btn_star_big_on"/>
+                <TextView
+                    android:id="@+id/tv_row_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:textColor="#fff"
+                    android:text="9.2"/>
+            </LinearLayout>
+            
+
+
+        </RelativeLayout>
+        
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_row_title"
+                        android:textSize="18sp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_height="40dp"
+                        android:textColor="#000"
+                        android:text="Title"/>
+
+                    <TextView
+                        android:id="@+id/tv_row_year"
+                        android:textSize="14sp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="Year"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="#fff"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:text="Action"/>
+                    <TextView
+                        android:id="@+id/comedy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Comedy"/>
+                    <TextView
+                        android:id="@+id/romance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Romance"/>
+                    <TextView
+                        android:id="@+id/drama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:text="Drama"/>
+                    <TextView
+                        android:id="@+id/fantasy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Fantasy"/>
+                    <TextView
+                        android:id="@+id/sience_fiction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Si-Fi"/>
+                    <TextView
+                        android:id="@+id/adventure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="2dp"
+                        android:textColor="#fff"
+                        android:background="@drawable/rounded_corners"
+                        android:layout_marginBottom="3dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Adventure"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

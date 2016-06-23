@@ -6,8 +6,11 @@
     tools:context="com.akshaykale.popularmovies.MainActivity">
 
     <ListView
+        android:layout_margin="5dp"
         android:id="@+id/list"
         android:layout_width="match_parent"
+        android:divider="@null"
+        android:dividerHeight="5dp"
         android:layout_height="match_parent">
 
     </ListView>
