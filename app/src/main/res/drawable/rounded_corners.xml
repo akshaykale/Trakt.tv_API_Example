@@ -17,14 +17,14 @@
     <!-- If you want to add some padding -->
     <padding
         android:left="6dp"
-        android:top="6dp"
+        android:top="2dp"
         android:right="6dp"
-        android:bottom="6dp"    >
+        android:bottom="2dp"    >
     </padding>
  
     <!-- Here is the corner radius -->
     <corners
-        android:radius="10dp"   >
+        android:radius="7dp"   >
     </corners>
  
 </shape>

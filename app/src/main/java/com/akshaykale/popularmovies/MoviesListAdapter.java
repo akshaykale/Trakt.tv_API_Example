@@ -92,7 +92,7 @@ public class MoviesListAdapter extends BaseAdapter {
 
         try{
             Picasso.with(context)
-                    .load(movie.getBanner())
+                    .load(movie.getBanner()).resize(150, 150)
                     //.centerCrop()
                     .into(holder.banner);
         }catch (Exception e){ e.printStackTrace(); }

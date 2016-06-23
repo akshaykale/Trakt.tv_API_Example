@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"
                 />
 
             <LinearLayout
@@ -51,11 +52,11 @@
                     android:textColor="#fff"
                     android:text="9.2"/>
             </LinearLayout>
-            
+
 
 
         </RelativeLayout>
-        
+
 
 
         <LinearLayout
@@ -109,7 +110,7 @@
                         android:id="@+id/action"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textColor="#fff"
                         android:visibility="gone"
                         android:fontFamily="sans-serif-light"
@@ -120,7 +121,7 @@
                         android:id="@+id/comedy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:background="@drawable/rounded_corners"
@@ -132,7 +133,7 @@
                         android:id="@+id/romance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:background="@drawable/rounded_corners"
@@ -144,7 +145,7 @@
                         android:id="@+id/drama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:visibility="gone"
@@ -156,7 +157,7 @@
                         android:id="@+id/fantasy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:background="@drawable/rounded_corners"
@@ -168,7 +169,7 @@
                         android:id="@+id/sience_fiction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:background="@drawable/rounded_corners"
@@ -180,7 +181,7 @@
                         android:id="@+id/adventure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_marginLeft="2dp"
                         android:textColor="#fff"
                         android:background="@drawable/rounded_corners"

@@ -21,7 +21,7 @@ public class Constants {
                 .append(category)
                 .append("?page="+page)
                // .append("&extended=images")
-        .append("&extended=full");
+        .append("&extended=full,images");
 
 
         return url.toString();

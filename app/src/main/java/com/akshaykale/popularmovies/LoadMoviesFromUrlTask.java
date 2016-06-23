@@ -123,9 +123,9 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
                 if (!jsonObject.isNull("rating"))
                     movie.setRating(jsonObject.getDouble("rating"));
                 if (!jsonObject.isNull("images")){
-                    JSONObject jj = jsonObject.getJSONObject("images").getJSONObject("banner");
-                    if (!jj.isNull("full")){
-                        movie.setBanner(jj.getString("full"));
+                    JSONObject jj = jsonObject.getJSONObject("images").getJSONObject("poster");
+                    if (!jj.isNull("thumb")){
+                        movie.setBanner(jj.getString("thumb"));
                     }
                 }
                 if (!jsonObject.isNull("genres")){

@@ -10,7 +10,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:divider="@null"
-        android:dividerHeight="5dp"
+        android:dividerHeight="7dp"
         android:layout_height="match_parent">
 
     </ListView>
