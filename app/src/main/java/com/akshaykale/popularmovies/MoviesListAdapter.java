@@ -29,12 +29,12 @@ public class MoviesListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mMovieList.size();
+        return MainActivity.mPopularMovieList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mMovieList.get(position);
+        return MainActivity.mPopularMovieList.get(position);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MoviesListAdapter extends BaseAdapter {
 
         Movie movie = (Movie) getItem(position);
 
-        //holder.countryName.setText(movie.getTitle());
+        holder.title.setText(movie.getTitle()+" ("+movie.getYear()+")");
         //holder.countryName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.earth, 0, 0, 0);
 
         return convertView;
@@ -75,7 +75,7 @@ public class MoviesListAdapter extends BaseAdapter {
         private TextView year;
 
         public ViewHolder(View v) {
-            //title = (TextView) v.findViewById(R.id.country_name);
+            title = (TextView) v.findViewById(R.id.tv_row_title);
             //year = (TextView) v.findViewById(R.id.);
         }
     }

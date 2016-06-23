@@ -38,7 +38,7 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
     @Override
     protected String doInBackground(String... params) {
         try {
-            URL obj = new URL(params[0]);
+            URL obj = new URL(this.mUrl);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
             //add request header

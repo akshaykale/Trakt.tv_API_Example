@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity implements
     private ListView listView;
     private ProgressDialog dialog;
     private MoviesListAdapter adapter;
-    ArrayList<Movie> mPopularMovieList;
+    public static ArrayList<Movie> mPopularMovieList;
 
     int page_count = 1;
-    int max_pages = 1;  //initially
+    int max_pages = 100;  //initially
 
 
     @Override
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements
         listView = (ListView) findViewById(R.id.list);
 
         if(Utils.isOnline(getApplicationContext())) {
-            setListViewAdapter();
             getDataFromUrl(Constants.getMoviesURL("popular", page_count));
+            setListViewAdapter();
             listView.setOnScrollListener(onScrollListener());
         }else {
             Toast.makeText(this,"No Internet connectivity", Toast.LENGTH_SHORT).show();
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onPopularMoviesLoaded(ArrayList<Movie> movies) {
-        mPopularMovieList = movies;
+        mPopularMovieList.addAll( movies);
         adapter.notifyDataSetChanged();
     }
 }
