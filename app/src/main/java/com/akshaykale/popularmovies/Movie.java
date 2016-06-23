@@ -44,6 +44,21 @@ public class Movie {
         this.id_TMDB = id_TMDB;
     }
 
+    public int getTrakt() {
+        return trakt;
+    }
+
+    public void setTrakt(int trakt) {
+        this.trakt = trakt;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
     /**
      * {
      "title":"Batman Begins",
@@ -58,6 +73,8 @@ public class Movie {
      * */
 
     String title;
-    int year;
-    String id_IMDB,id_TMDB;
+    int year,trakt;
+    String id_IMDB,id_TMDB,slug;
+
+
 }
