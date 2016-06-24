@@ -3,7 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- cards -->
+    <!-- cards listview-->
     <dimen name="cardMarginHorizontal">12dp</dimen>
     <dimen name="cardMarginVertical">10dp</dimen>
+
+    <!-- cards details-->
+    <dimen name="cardMarginHorizontal_det">6dp</dimen>
+    <dimen name="cardMarginVertical_det">5dp</dimen>
 </resources>

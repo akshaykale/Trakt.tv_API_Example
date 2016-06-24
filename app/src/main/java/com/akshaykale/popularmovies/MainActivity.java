@@ -1,17 +1,20 @@
 package com.akshaykale.popularmovies;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements
-        IMoviesLoadedListener {
+        IMoviesLoadedListener, AdapterView.OnItemClickListener {
 
     private static final String TAG = "MainActivity";
     private ListView listView;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements
             getDataFromUrl(Constants.getMoviesURL("popular", page_count));
             setListViewAdapter();
             listView.setOnScrollListener(onScrollListener());
+            listView.setOnItemClickListener(this);
         }else {
             Toast.makeText(this,"No Internet connectivity", Toast.LENGTH_SHORT).show();
         }
@@ -90,5 +94,31 @@ public class MainActivity extends AppCompatActivity implements
     public void onPopularMoviesLoaded(ArrayList<Movie> movies) {
         mPopularMovieList.addAll( movies);
         adapter.notifyDataSetChanged();
+    }
+
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Movie movie = mPopularMovieList.get(position);
+
+        Intent intent = new Intent(MainActivity.this,MovieDetailsActivity.class);
+        intent.putExtra("title",movie.getTitle());
+        intent.putExtra("year",movie.getYear());
+        intent.putExtra("tagline",movie.getTagline());
+        intent.putExtra("overview",movie.getOverview());
+        intent.putExtra("genres",movie.getGenres());
+        intent.putExtra("homepage",movie.getHomepage());
+        intent.putExtra("imdb",movie.getId_IMDB());
+        intent.putExtra("tmdb",movie.getId_TMDB());
+        intent.putExtra("trailer",movie.getTrailer());
+        intent.putExtra("rating",movie.getRating());
+        intent.putExtra("runtime",movie.getRuntime());
+
+        startActivity(intent);
+
+
+
     }
 }
