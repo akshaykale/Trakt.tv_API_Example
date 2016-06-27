@@ -26,4 +26,20 @@ public class Constants {
 
         return url.toString();
     }
+
+    //https://api-v2launch.trakt.tv/search?query=batman&type=type&year=2015
+
+    public static String getSearchURL(String keyword,int page){
+        StringBuilder url = new StringBuilder();
+        url.append(BASE_URL)
+                .append("search")
+                .append("?query=")
+                .append(keyword)
+                .append("&type=movie")
+                .append("&page="+page);
+               // .append("&extended=full,images");
+
+
+        return url.toString();
+    }
 }

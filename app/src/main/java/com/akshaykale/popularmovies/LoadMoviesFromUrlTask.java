@@ -25,6 +25,7 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
     private IMoviesLoadedListener iMoviesLoadedListener;
     Context mContext;
     String mUrl;
+    int scroll;
 
     private final String USER_AGENT = "Android";
 
@@ -32,12 +33,25 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
         this.mContext = mContext;
         this.mUrl = mUrl;
         this.iMoviesLoadedListener = iMoviesLoadedListener;
+        int scroll = 0;
+
+    }
+
+    public LoadMoviesFromUrlTask(Context mContext, String mUrl, int scroll, IMoviesLoadedListener iMoviesLoadedListener) {
+        this.mContext = mContext;
+        this.mUrl = mUrl;
+        this.iMoviesLoadedListener = iMoviesLoadedListener;
+        this.scroll = scroll;
 
     }
 
     @Override
     protected String doInBackground(String... params) {
         try {
+
+            if (this.isCancelled())
+                return "cancled";
+
             URL obj = new URL(this.mUrl);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -53,6 +67,9 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
 
             int responseCode = con.getResponseCode();
 
+            if (this.isCancelled())
+                return "cancled";
+
             if (responseCode == 200) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 String inputLine;
@@ -61,6 +78,8 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
                     response.append(inputLine);
                 }
                 in.close();
+                if (this.isCancelled())
+                    return "cancled";
                 return response.toString();
             }
         } catch (MalformedURLException e) {
@@ -75,12 +94,64 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
 
     @Override
     protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+
+        if (s.equals("cancled") || this.isCancelled())
+            return;
 
         ArrayList<Movie> movieList = new ArrayList<>();
-        movieList = parseResponse(s);
-        iMoviesLoadedListener.onPopularMoviesLoaded(movieList);
+        if(mUrl.contains("?query=")){
+            movieList = parseSearchQueryResponse(s);
+        }else {
+            movieList = parseResponse(s);
+        }
+        if (s.equals("cancled") || this.isCancelled())
+            return;
+        iMoviesLoadedListener.onPopularMoviesLoaded(movieList,this.scroll);
+    }
 
+    private ArrayList<Movie> parseSearchQueryResponse(String s) {
+
+        ArrayList<Movie> movieList = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(s);
+            for (int i=0;i<jsonArray.length();i++){
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i).getJSONObject("movie");
+                Movie movie = new Movie();
+
+                if (!jsonObject.isNull("title"))
+                    movie.setTitle(jsonObject.getString("title"));
+                if (!jsonObject.isNull("year"))
+                    movie.setYear(jsonObject.getInt("year"));
+                if (!jsonObject.isNull("overview"))
+                    movie.setOverview(jsonObject.getString("overview"));
+                if (!jsonObject.isNull("images")){
+                    JSONObject jj = jsonObject.getJSONObject("images").getJSONObject("poster");
+                    if (!jj.isNull("thumb")){
+                        movie.setBanner(jj.getString("thumb"));
+                    }
+                }
+
+                if (!jsonObject.isNull("ids")){
+                    JSONObject joID = jsonObject.getJSONObject("ids");
+                    if (!joID.isNull("imdb"))
+                        movie.setId_IMDB(joID.getString("imdb"));
+                    if (!joID.isNull("tmdb"))
+                        movie.setId_TMDB(joID.getString("tmdb"));
+                    if (!joID.isNull("trakt"))
+                        movie.setTrakt(joID.getInt("trakt"));
+                    if (!joID.isNull("slug"))
+                        movie.setSlug(joID.getString("slug"));
+                }
+
+                movieList.add(movie);
+            }
+            return movieList;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private ArrayList<Movie> parseResponse(String s) {

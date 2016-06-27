@@ -7,6 +7,6 @@ import java.util.ArrayList;
  */
 public interface IMoviesLoadedListener {
 
-    void onPopularMoviesLoaded(ArrayList<Movie> movies);
+    void onPopularMoviesLoaded(ArrayList<Movie> movies, int scroll);
 
 }

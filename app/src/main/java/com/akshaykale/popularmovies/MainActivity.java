@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onPopularMoviesLoaded(ArrayList<Movie> movies) {
+    public void onPopularMoviesLoaded(ArrayList<Movie> movies, int scroll) {
         mPopularMovieList.addAll( movies);
         adapter.notifyDataSetChanged();
     }
@@ -117,8 +119,25 @@ public class MainActivity extends AppCompatActivity implements
         intent.putExtra("runtime",movie.getRuntime());
 
         startActivity(intent);
+    }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(searchIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
