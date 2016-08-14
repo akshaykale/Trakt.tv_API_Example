@@ -171,52 +171,72 @@ public class LoadMoviesFromUrlTask extends AsyncTask<String,String,String>{
              }
          ]
          * */
+
+        /**{
+            "watchers": 21,
+            "movie": {
+                    "title": "TRON: Legacy",
+                    "year": 2010,
+                    "ids": {
+                        "trakt": 1,
+                        "slug": "tron-legacy-2010",
+                        "imdb": "tt1104001",
+                        "tmdb": 20526
+                    }
+            }
+           }
+         */
         try {
             JSONArray jsonArray = new JSONArray(s);
             for (int i=0;i<jsonArray.length();i++){
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Movie movie = new Movie();
-                if (!jsonObject.isNull("title"))
-                    movie.setTitle(jsonObject.getString("title"));
-                if (!jsonObject.isNull("year"))
-                    movie.setYear(jsonObject.getInt("year"));
-                if (!jsonObject.isNull("tagline"))
-                    movie.setTagline(jsonObject.getString("tagline"));
-                if (!jsonObject.isNull("overview"))
-                    movie.setOverview(jsonObject.getString("overview"));
-                if (!jsonObject.isNull("runtime"))
-                    movie.setRuntime(jsonObject.getInt("runtime"));
-                if (!jsonObject.isNull("trailer"))
-                    movie.setTrailer(jsonObject.getString("trailer"));
-                if (!jsonObject.isNull("homepage"))
-                    movie.setHomepage(jsonObject.getString("homepage"));
-                if (!jsonObject.isNull("rating"))
-                    movie.setRating(jsonObject.getDouble("rating"));
-                if (!jsonObject.isNull("images")){
-                    JSONObject jj = jsonObject.getJSONObject("images").getJSONObject("poster");
-                    if (!jj.isNull("thumb")){
-                        movie.setBanner(jj.getString("thumb"));
+                /** for trending movies uncomment following lines of code and a "}" closing brace*/
+                //if(!jsonObject.isNull("movie")) {
+                //    jsonObject = jsonObject.getJSONObject("movie");
+
+                    if (!jsonObject.isNull("title"))
+                        movie.setTitle(jsonObject.getString("title"));
+                    if (!jsonObject.isNull("year"))
+                        movie.setYear(jsonObject.getInt("year"));
+                    if (!jsonObject.isNull("tagline"))
+                        movie.setTagline(jsonObject.getString("tagline"));
+                    if (!jsonObject.isNull("overview"))
+                        movie.setOverview(jsonObject.getString("overview"));
+                    if (!jsonObject.isNull("runtime"))
+                        movie.setRuntime(jsonObject.getInt("runtime"));
+                    if (!jsonObject.isNull("trailer"))
+                        movie.setTrailer(jsonObject.getString("trailer"));
+                    if (!jsonObject.isNull("homepage"))
+                        movie.setHomepage(jsonObject.getString("homepage"));
+                    if (!jsonObject.isNull("rating"))
+                        movie.setRating(jsonObject.getDouble("rating"));
+                    if (!jsonObject.isNull("images")) {
+                        JSONObject jj = jsonObject.getJSONObject("images").getJSONObject("poster");
+                        if (!jj.isNull("thumb")) {
+                            movie.setBanner(jj.getString("thumb"));
+                        }
                     }
-                }
-                if (!jsonObject.isNull("genres")){
-                    JSONArray jj = jsonObject.getJSONArray("genres");
-                    movie.setGenres(jj.toString());
-                }
+                    if (!jsonObject.isNull("genres")) {
+                        JSONArray jj = jsonObject.getJSONArray("genres");
+                        movie.setGenres(jj.toString());
+                    }
 
-                if (!jsonObject.isNull("ids")){
-                    JSONObject joID = jsonObject.getJSONObject("ids");
-                    if (!joID.isNull("imdb"))
-                        movie.setId_IMDB(joID.getString("imdb"));
-                    if (!joID.isNull("tmdb"))
-                        movie.setId_TMDB(joID.getString("tmdb"));
-                    if (!joID.isNull("trakt"))
-                        movie.setTrakt(joID.getInt("trakt"));
-                    if (!joID.isNull("slug"))
-                        movie.setSlug(joID.getString("slug"));
-                }
+                    if (!jsonObject.isNull("ids")) {
+                        JSONObject joID = jsonObject.getJSONObject("ids");
+                        if (!joID.isNull("imdb"))
+                            movie.setId_IMDB(joID.getString("imdb"));
+                        if (!joID.isNull("tmdb"))
+                            movie.setId_TMDB(joID.getString("tmdb"));
+                        if (!joID.isNull("trakt"))
+                            movie.setTrakt(joID.getInt("trakt"));
+                        if (!joID.isNull("slug"))
+                            movie.setSlug(joID.getString("slug"));
+                    }
 
-                movieList.add(movie);
+                    movieList.add(movie);
+                //}  //uncomment for trending movies
             }
             return movieList;
         } catch (JSONException e) {
